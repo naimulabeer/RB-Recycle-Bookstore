@@ -1,0 +1,52 @@
+body {
+    background-color: #ede7f6;
+}
+
+.container .row {
+    margin-top: 20px;
+}
+
+@keyframes example {
+    0% {
+        background-color: #988db3;
+    }
+
+    25% {
+        background-color: #7e57c2;
+    }
+
+    50% {
+        background-color: #d1c4e9;
+    }
+
+    100% {
+        background-color: #ede7f6;
+    }
+}
+
+.container .row .col-sm-3 .card {
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-bottom: 67px;
+    box-shadow: 10px 10px 8px darkblue;
+    animation-name: example;
+    animation-duration: 5s;
+}
+
+.container .footerhr {
+    margin-top: 80px;
+    border-width: thin;
+    box-shadow: 1px 1px 1px purple;
+}
+
+.container .foot {
+    align-content: center;
+    color: black;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
