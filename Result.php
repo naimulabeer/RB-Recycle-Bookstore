@@ -52,7 +52,46 @@ if (!isset($_SESSION['username']))
             </div>
         </div>
         <?php
+        include('config.php');
+        $keyword = $_POST['keyword'];
 
+        $query = "select * from products  where PID like '%{$keyword}%' OR Title like '%{$keyword}%' OR Author like '%{$keyword}%' OR Category like '%{$keyword}%'";
+        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+
+        $i = 0;
+        echo '<div class="container-fluid" id="books">
+        <div class="row">
+          <div class="col-xs-12 text-center" id="heading">
+                 <h4 style="color:#00B9F5;text-transform:uppercase;"> found  ' . mysqli_num_rows($result) . ' records </h4>
+           </div>
+        </div>';
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $path = "img/books/" . $row['PID'] . ".jpg";
+                $description = "description.php?ID=" . $row["PID"];
+                if ($i % 3 == 0)  $offset = 0;
+                else  $offset = 1;
+                if ($i % 3 == 0)
+                    echo '<div class="row">';
+                echo '
+               <a href="' . $description . '">
+                <div class="col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-' . $offset . ' col-lg-3 text-center w3-card-8 w3-dark-grey">
+                    <div class="book-block">
+                        <img class="book block-center img-responsive" src="' . $path . '">
+                        <hr>
+                         ' . $row["Title"] . '<br>
+                        ' . $row["Price"] . '  &nbsp
+                        <span style="text-decoration:line-through;color:#828282;"> ' . $row["MRP"] . ' </span>
+                        <span class="label label-warning">' . $row["Discount"] . '%</span>
+                    </div>
+                </div>
+                
+               </a> ';
+                $i++;
+                if ($i % 3 == 0)
+                    echo '</div>';
+            }
+        }
         ?>
     </div>;
 
