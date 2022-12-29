@@ -43,4 +43,9 @@ include 'admin.php';
 
 	echo "</table> \n";
 ?>
+<div class="page-content p-4" id="content">
 
+
+<a href=addproduct.php style="color: #231942;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+<button class="button-69" role="button">Add New Product</button></a>"
+</div>
